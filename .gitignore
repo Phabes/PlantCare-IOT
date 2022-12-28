@@ -2,7 +2,7 @@ mosquitto/data/*
 mosquitto/log/*
 !mosquitto/data/.gitkeep 
 !mosquitto/log/.gitkeep
-node-red-data/.npm
-node-red-data/lib
-node-red-data/node_modules
-node-red-data/.*
+node-red/.npm
+node-red/lib
+node-red/node_modules
+node-red/.*
