@@ -21,6 +21,10 @@ services:
             - "1880:1880"
         volumes:
             - ./node-red:/data
+    redis:
+        image: "redis:alpine"
+        ports:
+            - "6379:6379"
 
 networks:
   iot-plant-net:

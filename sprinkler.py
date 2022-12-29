@@ -2,6 +2,7 @@ import datetime
 import time
 import paho.mqtt.client as mqtt
 import json
+import redis as redis
 
 ''' JSON Message to sprinkler:
 {
@@ -9,6 +10,8 @@ import json
     "time": float      [number_of_minutes]
 }
 '''
+
+r = redis.Redis(host='localhost', port=6379, db=0)
 
 
 def on_message(client, userdata, msg):
@@ -22,10 +25,14 @@ def on_message(client, userdata, msg):
             if datetime.datetime.now() >= end_time:
                 break
             else:
+                humidity = int(r.get("humidity"))
+
                 if humidity == 100:
                     continue
 
                 humidity += 1
+
+                r.set("humidity", humidity)
 
                 time.sleep(0.2)
         print("watering finished")
