@@ -89,7 +89,7 @@
         "id": "aaedb7e0bbede60d",
         "type": "switch",
         "z": "29c3163fb7817531",
-        "name": "choose",
+        "name": "ChooseIfWater",
         "property": "payload",
         "propertyType": "msg",
         "rules": [
@@ -102,7 +102,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 460,
+        "x": 480,
         "y": 240,
         "wires": [
             [
@@ -133,7 +133,7 @@
         "id": "14b7533e526e8529",
         "type": "change",
         "z": "29c3163fb7817531",
-        "name": "set_watering_1_minute",
+        "name": "Set1MinuteWatering",
         "rules": [
             {
                 "t": "set",
@@ -148,7 +148,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 830,
+        "x": 820,
         "y": 240,
         "wires": [
             [
@@ -169,7 +169,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 700,
+        "x": 760,
         "y": 160,
         "wires": []
     },
@@ -194,7 +194,7 @@
         "id": "cb247f95828ef699",
         "type": "inject",
         "z": "29c3163fb7817531",
-        "name": "EveryEveningWatering",
+        "name": "TriggerEveryEveningWatering",
         "props": [
             {
                 "p": "payload"
@@ -207,7 +207,7 @@
         "topic": "",
         "payload": "{\"turn\":true,\"time\":5}",
         "payloadType": "json",
-        "x": 830,
+        "x": 850,
         "y": 340,
         "wires": [
             [
@@ -219,7 +219,7 @@
         "id": "1986ecc4b0a1cb76",
         "type": "inject",
         "z": "29c3163fb7817531",
-        "name": "EveryMorningWatering",
+        "name": "TriggerEveryMorningWatering",
         "props": [
             {
                 "p": "payload"
@@ -232,7 +232,7 @@
         "topic": "",
         "payload": "{\"turn\":true,\"time\":5}",
         "payloadType": "json",
-        "x": 830,
+        "x": 850,
         "y": 400,
         "wires": [
             [
