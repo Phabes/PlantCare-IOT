@@ -7,11 +7,68 @@
         "info": ""
     },
     {
+        "id": "b551d0beeb6044a4",
+        "type": "mqtt-broker",
+        "name": "mqtt",
+        "broker": "mosquitto",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "901e06ac39d3f22a",
+        "type": "mqtt-broker",
+        "name": "mqtt",
+        "broker": "mosquitto",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
         "id": "699c27a481f505cf",
         "type": "mqtt in",
         "z": "29c3163fb7817531",
         "name": "",
-        "topic": "garden",
+        "topic": "soil-sensor",
         "qos": "2",
         "datatype": "auto-detect",
         "broker": "b551d0beeb6044a4",
@@ -19,75 +76,11 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 190,
+        "x": 200,
         "y": 240,
         "wires": [
             [
                 "aaedb7e0bbede60d"
-            ]
-        ]
-    },
-    {
-        "id": "5b06a651c8e020b9",
-        "type": "debug",
-        "z": "29c3163fb7817531",
-        "name": "turn off",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 710,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "3184b96745cf46a5",
-        "type": "mqtt out",
-        "z": "29c3163fb7817531",
-        "name": "",
-        "topic": "garden",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "b551d0beeb6044a4",
-        "x": 460,
-        "y": 100,
-        "wires": []
-    },
-    {
-        "id": "29da7c3b9e401528",
-        "type": "inject",
-        "z": "29c3163fb7817531",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 220,
-        "y": 100,
-        "wires": [
-            [
-                "3184b96745cf46a5"
             ]
         ]
     },
@@ -101,12 +94,12 @@
         "rules": [
             {
                 "t": "lt",
-                "v": "26",
+                "v": "40",
                 "vt": "str"
             },
             {
                 "t": "gt",
-                "v": "80",
+                "v": "90",
                 "vt": "str"
             },
             {
@@ -120,7 +113,7 @@
         "y": 240,
         "wires": [
             [
-                "f71f237d9b891ca1"
+                "14b7533e526e8529"
             ],
             [
                 "5b06a651c8e020b9"
@@ -129,40 +122,6 @@
                 "f5dc7a7630d4b623"
             ]
         ]
-    },
-    {
-        "id": "f71f237d9b891ca1",
-        "type": "debug",
-        "z": "29c3163fb7817531",
-        "name": "turn on",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 720,
-        "y": 180,
-        "wires": []
-    },
-    {
-        "id": "f5dc7a7630d4b623",
-        "type": "debug",
-        "z": "29c3163fb7817531",
-        "name": "nothing",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 720,
-        "y": 300,
-        "wires": []
     },
     {
         "id": "576a3f0da794c8f5",
@@ -451,60 +410,107 @@
         ]
     },
     {
-        "id": "b551d0beeb6044a4",
-        "type": "mqtt-broker",
-        "name": "mqtt",
-        "broker": "mosquitto",
-        "port": "1883",
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
-        "willMsg": {},
+        "id": "0863791acdfb8dca",
+        "type": "mqtt out",
+        "z": "29c3163fb7817531",
+        "name": "",
+        "topic": "sprinkler",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
         "userProps": "",
-        "sessionExpiry": ""
+        "correl": "",
+        "expiry": "",
+        "broker": "901e06ac39d3f22a",
+        "x": 1020,
+        "y": 160,
+        "wires": []
     },
     {
-        "id": "901e06ac39d3f22a",
-        "type": "mqtt-broker",
-        "name": "mqtt",
-        "broker": "mosquitto",
-        "port": "1883",
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthRetain": "false",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closeRetain": "false",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willRetain": "false",
-        "willPayload": "",
-        "willMsg": {},
-        "userProps": "",
-        "sessionExpiry": ""
+        "id": "f5dc7a7630d4b623",
+        "type": "debug",
+        "z": "29c3163fb7817531",
+        "name": "nothing",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "5b06a651c8e020b9",
+        "type": "debug",
+        "z": "29c3163fb7817531",
+        "name": "turn off",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "14b7533e526e8529",
+        "type": "change",
+        "z": "29c3163fb7817531",
+        "name": "set_watering_10_minutes",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"turn\":true,\"time\":10}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 770,
+        "y": 160,
+        "wires": [
+            [
+                "0863791acdfb8dca"
+            ]
+        ]
+    },
+    {
+        "id": "86b9c0ad26af74b8",
+        "type": "inject",
+        "z": "29c3163fb7817531",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"turn\":true,\"time\":0.1}",
+        "payloadType": "json",
+        "x": 190,
+        "y": 360,
+        "wires": [
+            [
+                "576a3f0da794c8f5"
+            ]
+        ]
     }
 ]
