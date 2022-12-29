@@ -16,6 +16,7 @@ r = redis.Redis(host='localhost', port=6379, db=0)
 
 def on_message(client, userdata, msg):
     payload = json.loads(msg.payload)
+    print("Got msg: " + str(payload))
 
     if payload['turn']:
         print("turning on watering for " + str(payload['time']) + " min")
@@ -46,7 +47,6 @@ def on_message(client, userdata, msg):
 
 client = mqtt.Client()
 client.on_message = on_message
-client.max_inflight_messages_set(1)
 client.connect("localhost", 1883, 60)
 client.subscribe("sprinkler", 0)
 client.loop_forever()
