@@ -7,390 +7,31 @@
         "info": ""
     },
     {
-        "id": "699c27a481f505cf",
-        "type": "mqtt in",
-        "z": "29c3163fb7817531",
-        "name": "",
-        "topic": "soil-sensor",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "901e06ac39d3f22a",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 100,
-        "y": 240,
-        "wires": [
-            [
-                "aaedb7e0bbede60d",
-                "d4437b43162cb342"
-            ]
-        ]
-    },
-    {
-        "id": "aaedb7e0bbede60d",
-        "type": "switch",
-        "z": "29c3163fb7817531",
-        "name": "choose",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "lt",
-                "v": "40",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 460,
-        "y": 240,
-        "wires": [
-            [
-                "14b7533e526e8529",
-                "ca7b0961f8b65f90"
-            ]
-        ]
-    },
-    {
-        "id": "fec7cafc62080149",
-        "type": "mqtt in",
-        "z": "29c3163fb7817531",
-        "name": "",
-        "topic": "sprinkler",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "901e06ac39d3f22a",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 160,
-        "y": 560,
-        "wires": [
-            [
-                "072240a10d1ec34d",
-                "47109471124f6565"
-            ]
-        ]
-    },
-    {
-        "id": "072240a10d1ec34d",
-        "type": "debug",
-        "z": "29c3163fb7817531",
-        "name": "check_received_data",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 540,
-        "y": 560,
-        "wires": []
-    },
-    {
-        "id": "40d6cc805bf8ae57",
-        "type": "switch",
-        "z": "29c3163fb7817531",
-        "name": "mode",
-        "property": "mode",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "manual_full",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "manual_part",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "automatic",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "daily",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 4,
-        "x": 370,
-        "y": 700,
-        "wires": [
-            [
-                "0ef21468a7c8157f"
-            ],
-            [
-                "65dd735412c1ec55"
-            ],
-            [
-                "5ab31ee0add34303"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "5847444fe45b008d",
-        "type": "comment",
-        "z": "29c3163fb7817531",
-        "name": "Received the moisture level from the sensor",
-        "info": "Received the moisture level from the sensor",
-        "x": 250,
-        "y": 500,
-        "wires": []
-    },
-    {
-        "id": "e46aa0ef9abc6fec",
-        "type": "comment",
-        "z": "29c3163fb7817531",
-        "name": "check_weather(open_weather_map)",
-        "info": "to jest do daily",
-        "x": 180,
-        "y": 800,
-        "wires": []
-    },
-    {
-        "id": "5ab31ee0add34303",
-        "type": "function",
-        "z": "29c3163fb7817531",
-        "name": "automatic",
-        "func": "if (msg.payload < 25){\n    flow.set(\"watering\", 75) \n}\nelse if (msg.payload < 50) {\n    flow.set(\"watering\", 50)\n}\nelse if (msg.payload < 75) {\n    flow.set(\"watering\", 25)\n}\nelse {\n    flow.set(\"watering\", 0)\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 740,
-        "wires": [
-            [
-                "a0bbf41f70dcf331"
-            ]
-        ]
-    },
-    {
-        "id": "0ef21468a7c8157f",
-        "type": "function",
-        "z": "29c3163fb7817531",
-        "name": "full pump",
-        "func": "if (msg.payload < 101){\n    flow.set(\"watering\", 100);\n} else {\n    flow.set(\"watering\", 0);\n}\nreturn msg;\n ",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 620,
-        "wires": [
-            [
-                "a0bbf41f70dcf331"
-            ]
-        ]
-    },
-    {
-        "id": "65dd735412c1ec55",
-        "type": "function",
-        "z": "29c3163fb7817531",
-        "name": "to 75%",
-        "func": "if(msg.payload < 75){\n    flow.set(\"watering\", 75);\n} else {\n    flow.set(\"watering\", 0)\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 680,
-        "wires": [
-            [
-                "a0bbf41f70dcf331"
-            ]
-        ]
-    },
-    {
-        "id": "4d6ada96d9f8e263",
-        "type": "debug",
-        "z": "29c3163fb7817531",
-        "name": "watering",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "watering",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1080,
-        "y": 680,
-        "wires": []
-    },
-    {
-        "id": "47109471124f6565",
-        "type": "change",
-        "z": "29c3163fb7817531",
-        "name": "set_mode",
-        "rules": [
-            {
-                "t": "set",
-                "p": "mode",
-                "pt": "msg",
-                "to": "manual_part",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 160,
-        "y": 700,
-        "wires": [
-            [
-                "40d6cc805bf8ae57"
-            ]
-        ]
-    },
-    {
-        "id": "a0bbf41f70dcf331",
-        "type": "change",
-        "z": "29c3163fb7817531",
-        "name": "set_watering",
-        "rules": [
-            {
-                "t": "set",
-                "p": "watering",
-                "pt": "msg",
-                "to": "watering",
-                "tot": "flow"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 850,
-        "y": 680,
-        "wires": [
-            [
-                "4d6ada96d9f8e263"
-            ]
-        ]
-    },
-    {
-        "id": "14b7533e526e8529",
-        "type": "change",
-        "z": "29c3163fb7817531",
-        "name": "set_watering_1_minute",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "{\"turn\":true,\"time\":1}",
-                "tot": "json"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 770,
-        "y": 240,
-        "wires": [
-            [
-                "0863791acdfb8dca"
-            ]
-        ]
-    },
-    {
-        "id": "ca7b0961f8b65f90",
-        "type": "debug",
-        "z": "29c3163fb7817531",
-        "name": "TURNING ON WATERING",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 700,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "d4437b43162cb342",
-        "type": "debug",
-        "z": "29c3163fb7817531",
-        "name": "SOIL SENSOR",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 320,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "cb247f95828ef699",
-        "type": "inject",
-        "z": "29c3163fb7817531",
-        "name": "EveryEveningWatering",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "38 15 * * *",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"turn\":true,\"time\":1}",
-        "payloadType": "json",
-        "x": 770,
-        "y": 360,
-        "wires": [
-            [
-                "0863791acdfb8dca"
-            ]
-        ]
-    },
-    {
-        "id": "0863791acdfb8dca",
-        "type": "mqtt out",
-        "z": "29c3163fb7817531",
-        "name": "",
-        "topic": "sprinkler",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
+        "id": "b551d0beeb6044a4",
+        "type": "mqtt-broker",
+        "name": "mqtt",
+        "broker": "mosquitto",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
         "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "901e06ac39d3f22a",
-        "x": 1060,
-        "y": 240,
-        "wires": []
+        "sessionExpiry": ""
     },
     {
         "id": "901e06ac39d3f22a",
@@ -421,5 +62,200 @@
         "willMsg": {},
         "userProps": "",
         "sessionExpiry": ""
+    },
+    {
+        "id": "699c27a481f505cf",
+        "type": "mqtt in",
+        "z": "29c3163fb7817531",
+        "name": "",
+        "topic": "soil-sensor",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "b551d0beeb6044a4",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 100,
+        "y": 240,
+        "wires": [
+            [
+                "aaedb7e0bbede60d",
+                "d4437b43162cb342"
+            ]
+        ]
+    },
+    {
+        "id": "aaedb7e0bbede60d",
+        "type": "switch",
+        "z": "29c3163fb7817531",
+        "name": "ChooseIfWater",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "80",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 480,
+        "y": 240,
+        "wires": [
+            [
+                "14b7533e526e8529",
+                "ca7b0961f8b65f90"
+            ]
+        ]
+    },
+    {
+        "id": "0863791acdfb8dca",
+        "type": "mqtt out",
+        "z": "29c3163fb7817531",
+        "name": "",
+        "topic": "sprinkler",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "901e06ac39d3f22a",
+        "x": 1200,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "14b7533e526e8529",
+        "type": "change",
+        "z": "29c3163fb7817531",
+        "name": "Set1MinuteWatering",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"turn\":true,\"time\":1}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 820,
+        "y": 240,
+        "wires": [
+            [
+                "0863791acdfb8dca",
+                "40d9f0837aeab6d4"
+            ]
+        ]
+    },
+    {
+        "id": "ca7b0961f8b65f90",
+        "type": "debug",
+        "z": "29c3163fb7817531",
+        "name": "TURNING ON WATERING",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "d4437b43162cb342",
+        "type": "debug",
+        "z": "29c3163fb7817531",
+        "name": "SOIL SENSOR",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 320,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "cb247f95828ef699",
+        "type": "inject",
+        "z": "29c3163fb7817531",
+        "name": "TriggerEveryEveningWatering",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "00 22 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"turn\":true,\"time\":5}",
+        "payloadType": "json",
+        "x": 850,
+        "y": 340,
+        "wires": [
+            [
+                "0863791acdfb8dca"
+            ]
+        ]
+    },
+    {
+        "id": "1986ecc4b0a1cb76",
+        "type": "inject",
+        "z": "29c3163fb7817531",
+        "name": "TriggerEveryMorningWatering",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "00 08 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"turn\":true,\"time\":5}",
+        "payloadType": "json",
+        "x": 850,
+        "y": 400,
+        "wires": [
+            [
+                "0863791acdfb8dca"
+            ]
+        ]
+    },
+    {
+        "id": "40d9f0837aeab6d4",
+        "type": "debug",
+        "z": "29c3163fb7817531",
+        "name": "SETTING",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 160,
+        "wires": []
     }
 ]
