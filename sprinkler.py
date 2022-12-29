@@ -2,6 +2,12 @@ import datetime
 import time
 import paho.mqtt.client as mqtt
 import json
+from pymongo import MongoClient
+
+mongo_client = MongoClient("mongodb+srv://qwerty:qwerty123@plantcare-iot.q0i3fmr.mongodb.net")
+db = mongo_client.PlantCare
+collection = db.Soil
+
 
 ''' JSON Message to sprinkler:
 {
@@ -22,10 +28,13 @@ def on_message(client, userdata, msg):
             if datetime.datetime.now() >= end_time:
                 break
             else:
+                data = list(collection.find({}))
+                humidity = data[0]["humidity"]
+                print(humidity)
                 if humidity == 100:
                     continue
 
-                humidity += 1
+                updateResult = collection.update_one({'humidity': humidity}, {'$set': {'humidity': humidity + 1}})
 
                 time.sleep(0.2)
         print("watering finished")
