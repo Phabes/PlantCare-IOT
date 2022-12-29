@@ -1,43 +1,44 @@
-import random
+import datetime
 import time
-
 import paho.mqtt.client as mqtt
+import json
 
-humidity = 30
-
-def on_connect(client, userdata, flags, rc):
-    print("Connected with result code " + str(rc))
-    client.subscribe("$SYS/#")
-
+''' JSON Message to sprinkler:
+{
+    "turn": true/false [bool]
+    "time": float      [number_of_minutes]
+}
+'''
 
 def on_message(client, userdata, msg):
-    print(msg.topic + " " + str(msg.payload))
+    payload = json.loads(msg.payload)
 
+    if payload['turn']:
+        print("turning on watering for " + str(payload['time']) + " min")
 
-def on_publish(mqttc, obj, mid):
-    print("mid: " + str(mid))
+        end_time = datetime.datetime.now() + datetime.timedelta(minutes=payload['time'])
+        while True:
+            if datetime.datetime.now() >= end_time:
+                break
+            else:
+                if humidity == 100:
+                    continue
 
+                humidity += 1
 
-def on_subscribe(mqttc, obj, mid, granted_qos):
-    print("Subscribed: " + str(mid) + " " + str(granted_qos))
+                time.sleep(0.2)
+        print("watering finished")
+        return
 
+    if not payload['turn']:
+        print("turning off watering")
 
-def on_log(mqttc, obj, level, string):
-    print(string)
+        return
 
 
 client = mqtt.Client()
-client.on_connect = on_connect
 client.on_message = on_message
-client.on_publish = on_publish
-client.on_subscribe = on_subscribe
-
+client.max_inflight_messages_set(1)
 client.connect("localhost", 1883, 60)
-
-while(True):
-    client.publish("sprinkler", humidity, 0, False)
-    time.sleep(1)
-    humidity -= random.randint(1,50)
-
-
-
+client.subscribe("sprinkler", 0)
+client.loop_forever()

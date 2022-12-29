@@ -76,11 +76,12 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 200,
+        "x": 100,
         "y": 240,
         "wires": [
             [
-                "aaedb7e0bbede60d"
+                "aaedb7e0bbede60d",
+                "d4437b43162cb342"
             ]
         ]
     },
@@ -96,82 +97,17 @@
                 "t": "lt",
                 "v": "40",
                 "vt": "str"
-            },
-            {
-                "t": "gt",
-                "v": "90",
-                "vt": "str"
-            },
-            {
-                "t": "else"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 3,
-        "x": 440,
+        "outputs": 1,
+        "x": 460,
         "y": 240,
         "wires": [
             [
-                "14b7533e526e8529"
-            ],
-            [
-                "5b06a651c8e020b9"
-            ],
-            [
-                "f5dc7a7630d4b623"
-            ]
-        ]
-    },
-    {
-        "id": "576a3f0da794c8f5",
-        "type": "mqtt out",
-        "z": "29c3163fb7817531",
-        "name": "",
-        "topic": "sprinkler",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "901e06ac39d3f22a",
-        "x": 500,
-        "y": 440,
-        "wires": []
-    },
-    {
-        "id": "f773837fa52af2c6",
-        "type": "inject",
-        "z": "29c3163fb7817531",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            },
-            {
-                "p": "mode",
-                "v": "manual",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "63",
-        "payloadType": "num",
-        "x": 210,
-        "y": 440,
-        "wires": [
-            [
-                "576a3f0da794c8f5"
+                "14b7533e526e8529",
+                "ca7b0961f8b65f90"
             ]
         ]
     },
@@ -183,7 +119,7 @@
         "topic": "sprinkler",
         "qos": "2",
         "datatype": "auto-detect",
-        "broker": "901e06ac39d3f22a",
+        "broker": "",
         "nl": false,
         "rap": true,
         "rh": 0,
@@ -267,7 +203,7 @@
         "z": "29c3163fb7817531",
         "name": "Received the moisture level from the sensor",
         "info": "Received the moisture level from the sensor",
-        "x": 270,
+        "x": 250,
         "y": 500,
         "wires": []
     },
@@ -423,41 +359,7 @@
         "correl": "",
         "expiry": "",
         "broker": "901e06ac39d3f22a",
-        "x": 1020,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "f5dc7a7630d4b623",
-        "type": "debug",
-        "z": "29c3163fb7817531",
-        "name": "nothing",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 720,
-        "y": 320,
-        "wires": []
-    },
-    {
-        "id": "5b06a651c8e020b9",
-        "type": "debug",
-        "z": "29c3163fb7817531",
-        "name": "turn off",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 710,
+        "x": 1060,
         "y": 240,
         "wires": []
     },
@@ -465,13 +367,13 @@
         "id": "14b7533e526e8529",
         "type": "change",
         "z": "29c3163fb7817531",
-        "name": "set_watering_10_minutes",
+        "name": "set_watering_1_minute",
         "rules": [
             {
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"turn\":true,\"time\":10}",
+                "to": "{\"turn\":true,\"time\":1}",
                 "tot": "json"
             }
         ],
@@ -481,7 +383,7 @@
         "to": "",
         "reg": false,
         "x": 770,
-        "y": 160,
+        "y": 240,
         "wires": [
             [
                 "0863791acdfb8dca"
@@ -489,27 +391,61 @@
         ]
     },
     {
-        "id": "86b9c0ad26af74b8",
+        "id": "ca7b0961f8b65f90",
+        "type": "debug",
+        "z": "29c3163fb7817531",
+        "name": "TURNING ON WATERING",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "d4437b43162cb342",
+        "type": "debug",
+        "z": "29c3163fb7817531",
+        "name": "SOIL SENSOR",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 320,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "cb247f95828ef699",
         "type": "inject",
         "z": "29c3163fb7817531",
-        "name": "",
+        "name": "EveryEveningWatering",
         "props": [
             {
                 "p": "payload"
             }
         ],
         "repeat": "",
-        "crontab": "",
+        "crontab": "38 15 * * *",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"turn\":true,\"time\":0.1}",
+        "payload": "{\"turn\":true,\"time\":1}",
         "payloadType": "json",
-        "x": 190,
+        "x": 790,
         "y": 360,
         "wires": [
             [
-                "576a3f0da794c8f5"
+                "0863791acdfb8dca"
             ]
         ]
     }
