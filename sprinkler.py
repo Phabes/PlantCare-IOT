@@ -10,6 +10,7 @@ import json
 }
 '''
 
+
 def on_message(client, userdata, msg):
     payload = json.loads(msg.payload)
 
