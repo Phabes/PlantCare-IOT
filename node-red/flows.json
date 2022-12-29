@@ -139,7 +139,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"turn\":true,\"time\":0.3}",
+                "to": "{\"turn\":true,\"time\":1}",
                 "tot": "json"
             }
         ],
