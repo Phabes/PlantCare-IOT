@@ -55,240 +55,6 @@
         ]
     },
     {
-        "id": "fec7cafc62080149",
-        "type": "mqtt in",
-        "z": "29c3163fb7817531",
-        "name": "",
-        "topic": "sprinkler",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 160,
-        "y": 560,
-        "wires": [
-            [
-                "072240a10d1ec34d",
-                "47109471124f6565"
-            ]
-        ]
-    },
-    {
-        "id": "072240a10d1ec34d",
-        "type": "debug",
-        "z": "29c3163fb7817531",
-        "name": "check_received_data",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 540,
-        "y": 560,
-        "wires": []
-    },
-    {
-        "id": "40d6cc805bf8ae57",
-        "type": "switch",
-        "z": "29c3163fb7817531",
-        "name": "mode",
-        "property": "mode",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "manual_full",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "manual_part",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "automatic",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "daily",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 4,
-        "x": 370,
-        "y": 720,
-        "wires": [
-            [
-                "0ef21468a7c8157f"
-            ],
-            [
-                "65dd735412c1ec55"
-            ],
-            [
-                "5ab31ee0add34303"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "5847444fe45b008d",
-        "type": "comment",
-        "z": "29c3163fb7817531",
-        "name": "Received the moisture level from the sensor",
-        "info": "Received the moisture level from the sensor",
-        "x": 250,
-        "y": 500,
-        "wires": []
-    },
-    {
-        "id": "e46aa0ef9abc6fec",
-        "type": "comment",
-        "z": "29c3163fb7817531",
-        "name": "check_weather(open_weather_map)",
-        "info": "to jest do daily",
-        "x": 180,
-        "y": 800,
-        "wires": []
-    },
-    {
-        "id": "5ab31ee0add34303",
-        "type": "function",
-        "z": "29c3163fb7817531",
-        "name": "automatic",
-        "func": "if (msg.payload < 25){\n    flow.set(\"watering\", 75) \n}\nelse if (msg.payload < 50) {\n    flow.set(\"watering\", 50)\n}\nelse if (msg.payload < 75) {\n    flow.set(\"watering\", 25)\n}\nelse {\n    flow.set(\"watering\", 0)\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 740,
-        "wires": [
-            [
-                "a0bbf41f70dcf331"
-            ]
-        ]
-    },
-    {
-        "id": "0ef21468a7c8157f",
-        "type": "function",
-        "z": "29c3163fb7817531",
-        "name": "full pump",
-        "func": "if (msg.payload < 101){\n    flow.set(\"watering\", 100);\n} else {\n    flow.set(\"watering\", 0);\n}\nreturn msg;\n ",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 620,
-        "wires": [
-            [
-                "a0bbf41f70dcf331"
-            ]
-        ]
-    },
-    {
-        "id": "65dd735412c1ec55",
-        "type": "function",
-        "z": "29c3163fb7817531",
-        "name": "to 75%",
-        "func": "if(msg.payload < 75){\n    flow.set(\"watering\", 75);\n} else {\n    flow.set(\"watering\", 0)\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 680,
-        "wires": [
-            [
-                "a0bbf41f70dcf331"
-            ]
-        ]
-    },
-    {
-        "id": "4d6ada96d9f8e263",
-        "type": "debug",
-        "z": "29c3163fb7817531",
-        "name": "watering",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "watering",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1080,
-        "y": 680,
-        "wires": []
-    },
-    {
-        "id": "47109471124f6565",
-        "type": "change",
-        "z": "29c3163fb7817531",
-        "name": "set_mode",
-        "rules": [
-            {
-                "t": "set",
-                "p": "mode",
-                "pt": "msg",
-                "to": "manual_part",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 160,
-        "y": 700,
-        "wires": [
-            [
-                "40d6cc805bf8ae57"
-            ]
-        ]
-    },
-    {
-        "id": "a0bbf41f70dcf331",
-        "type": "change",
-        "z": "29c3163fb7817531",
-        "name": "set_watering",
-        "rules": [
-            {
-                "t": "set",
-                "p": "watering",
-                "pt": "msg",
-                "to": "watering",
-                "tot": "flow"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 850,
-        "y": 680,
-        "wires": [
-            [
-                "4d6ada96d9f8e263"
-            ]
-        ]
-    },
-    {
         "id": "0863791acdfb8dca",
         "type": "mqtt out",
         "z": "29c3163fb7817531",
@@ -302,7 +68,7 @@
         "correl": "",
         "expiry": "",
         "broker": "901e06ac39d3f22a",
-        "x": 1060,
+        "x": 1200,
         "y": 240,
         "wires": []
     },
@@ -325,7 +91,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 770,
+        "x": 890,
         "y": 240,
         "wires": [
             [
@@ -378,14 +144,14 @@
             }
         ],
         "repeat": "",
-        "crontab": "38 15 * * *",
+        "crontab": "00 21 * * *",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
         "payload": "{\"turn\":true,\"time\":1}",
         "payloadType": "json",
-        "x": 790,
-        "y": 360,
+        "x": 890,
+        "y": 340,
         "wires": [
             [
                 "0863791acdfb8dca"
