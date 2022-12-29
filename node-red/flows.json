@@ -95,7 +95,7 @@
         "rules": [
             {
                 "t": "lt",
-                "v": "40",
+                "v": "80",
                 "vt": "str"
             }
         ],
@@ -139,7 +139,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"turn\":true,\"time\":1}",
+                "to": "{\"turn\":true,\"time\":0.3}",
                 "tot": "json"
             }
         ],
