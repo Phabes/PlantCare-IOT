@@ -4,6 +4,6 @@
     "version": "0.0.1",
     "private": true,
     "dependencies": {
-        "node-red-node-openweathermap": "^0.5.1"
+        "node-red-node-openweathermap": "~0.5.1"
     }
 }

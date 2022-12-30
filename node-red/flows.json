@@ -418,5 +418,22 @@
         "x": 1540,
         "y": 520,
         "wires": []
+    },
+    {
+        "id": "b1cdd5eb9a1e4764",
+        "type": "openweathermap in",
+        "z": "29c3163fb7817531",
+        "name": "",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "",
+        "country": "",
+        "language": "en",
+        "x": 680,
+        "y": 680,
+        "wires": [
+            []
+        ]
     }
 ]
