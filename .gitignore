@@ -1,3 +1,5 @@
+.idea
+__pycache__
 mosquitto/data/*
 mosquitto/log/*
 node-red/.npm
