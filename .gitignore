@@ -6,3 +6,5 @@ node-red/.npm
 node-red/lib
 node-red/node_modules
 node-red/.*
+node_modules
+.idea
