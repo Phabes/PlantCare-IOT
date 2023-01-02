@@ -5,13 +5,6 @@ import json
 import redis as redis
 from threading import Thread
 
-''' JSON Message to sprinkler:
-{
-    "turn": true/false [bool]
-    "time": float      [number_of_minutes]
-}
-'''
-
 r = redis.Redis(host='localhost', port=6379, db=0, decode_responses=True)
 
 def watering(redis):

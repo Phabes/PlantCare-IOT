@@ -104,4 +104,32 @@ All images are connected with the same network: _iot-planet-net_.
 
 ![Dockercompose](./images/Dockercompose.png)
 
-## Scripts
+## Python scripts
+
+All scripts use redis to share one soil which is represented by an integer value called _humidity_. 0 is the minimum value and 100 is the maximum value.
+
+- **soil**
+  It is a script to simulate soil's behaviour. Every 1 second humidity value is decrement by 1.
+
+  ![Soil](./images/soil.png)
+
+  _humidity_ value cannot be smaller than 0 (it is the minimum value).
+
+- **sensor**
+  It is a script to simulate sensor's behaviour. Every five seconds it reads humidity value and publishs it to the MQTT server to the _soil-sensor_ topic.
+
+  ![Sensor](./images/sensor.png)
+
+- **sprinkler**
+  It is a script to simulate sprinkler's behaviour. It listens to the _sprinkler_ topic messages from the MQTT server. Messages processed by the sprinkler must be of the given JSON format:
+
+  ```
+    {
+        "turn": bool       [turn spinkler on / turn spinkler off],
+        "time": float      [number of minutes that watering should last]
+    }
+  ```
+
+  When a message comes in with the turn value set to _true_ it starts watering which lasts the time value number of seconds . _humidity_ value is incremented by 1 every 200 miliseconds.
+
+  ![Watering](./images/watering.png)
