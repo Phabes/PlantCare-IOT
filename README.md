@@ -72,12 +72,13 @@ Default port: `"6379:6379"`
 There are 3 images used:
 
 - **MQTT**
-  For the MQTT server we used the Eclipse Mosquitto image. \
+  For the MQTT server we used the Eclipse Mosquitto image.
   https://hub.docker.com/_/eclipse-mosquitto
+
   ![Dockercompose-mosquitto](./images/Dockercompose-mosquitto.png)
 
 - **Node-RED**
-  Image is built using Dockerfile. Based on nodered/node-red image. \
+  Image is built using Dockerfile. Based on nodered/node-red image.
   https://hub.docker.com/r/nodered/node-red
 
   ![Dockerfile](./images/Dockerfile.png)
