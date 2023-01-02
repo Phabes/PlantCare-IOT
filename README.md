@@ -66,3 +66,40 @@ Default port: `"6379:6379"`
 ![321237787_887107109398009_5403797075088989886_n](https://user-images.githubusercontent.com/61901509/210244605-76a32d88-c0c4-4a60-9130-3b0775472291.png)
 
 ![321922610_723402209343127_850382364625469373_n](https://user-images.githubusercontent.com/61901509/210244975-95924b3b-1957-4304-9ce4-1b7c726c2f38.png)
+
+## Docker
+
+There are 3 images used:
+
+- **MQTT**
+  For the MQTT server we used the Eclipse Mosquitto image.
+  https://hub.docker.com/_/eclipse-mosquitto
+  ![Dockercompose-mosquitto](./images/Dockercompose-mosquitto.png)
+
+- **Node-RED**
+  Image is built using Dockerfile. Based on nodered/node-red image.
+  https://hub.docker.com/r/nodered/node-red
+
+  ![Dockerfile](./images/Dockerfile.png)
+  _package.json_ file contains all required dependencies for node-red and scripts to run it:
+  ![Packagejson](./images/packagejson.png)
+
+  _soil_data_9_ file stores data for charts.
+  _settings.js_ file stores settings that are loaded into the runtime as a Node.js module that exports a JavaScript object of key/value pairs.
+  _flows_cred.js_ is credentials file. It is encrypted by default to ensure its contents cannot be easily read. We provides the key for the encryption in the settings.js file. If another instance of Node-RED doesn't have the same encryption key, it won't be able to decrypt the file.
+  _flows.js_ file stores the node-red flow which is loaded and then run when application starts.
+
+  Dockerfile is used to build the image inside docker-compose file:
+  ![Nodered](./images/Dockercompose-nodered.png)
+
+- **Redis**
+  For the Redis we used the Redis image.
+  https://hub.docker.com/_/redis
+
+  ![Redis](./images/Dockercompose-redis.png)
+
+All 3 images are put inside one container using docker-compose which lets us set up and run all images using one docker command.
+All images are connected with the same network: _iot-planet-net_.
+![Dockercompose](./images/Dockercompose.png)
+
+## Scripts
