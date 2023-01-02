@@ -33,9 +33,260 @@ python sprinkler.py
 
 Default server is `http://127.0.0.1:1880/`
 
-System layout:
+### System layout:
 
 ![321652927_441119368099957_4397307115607273046_n](https://user-images.githubusercontent.com/61901509/210244740-181e4a5e-9623-4f61-846a-8e8b3ed9e008.png)
+
+### Used node-red nodes:
+
+* #### Mqtt nodes
+
+<img width="279" alt="Zrzut ekranu 2023-01-3 o 00 15 01" src="https://user-images.githubusercontent.com/61901509/210284193-2c256a46-d4cd-4a14-af29-fb70c818fc88.png">
+
+<img width="281" alt="Zrzut ekranu 2023-01-3 o 00 16 35" src="https://user-images.githubusercontent.com/61901509/210284255-cbf1a22a-0d57-44ed-a035-52532bd9eb7a.png">
+
+***soil-sensor:***
+
+A mqtt-in node with mqtt server. Listens on soil-sensor topic. With auto-detect (parsed JSON object, string or buffer) output. 
+
+***sprinkler:***
+
+A mqtt-out with mqtt server. A topic is sprinkler.
+
+* #### Debug node:
+
+<img width="276" alt="Zrzut ekranu 2023-01-3 o 00 19 51" src="https://user-images.githubusercontent.com/61901509/210284366-41d093f4-b041-475d-bc77-224631829fa1.png">
+
+***SOIL SENSOR:***
+
+A node-red debug node which shows msg.payload output in debug window. 
+
+***weather forecast:***
+
+A debug node which print on the debug window msg.payload - a weather forecast.
+
+***TURNING ON 1 MINUTE:***
+
+A debug node which prints on a debug window msg.payload. Shows 1 minute irrigation action.
+
+***TURNING ON 5 MINUTES:***
+
+A debug node which prints on a debug window msg.payload. Shows 5 minute irrigation action.
+
+***write to historic data file:***
+
+A debug node which prints on a debug window msg.payload. Shows write to historic data file action.
+
+***read from historic data file:***
+
+A debug node which prints on a debug window msg.payload. Shows read from historic data file action.
+
+* #### Switch node:
+
+<img width="284" alt="Zrzut ekranu 2023-01-3 o 00 20 51" src="https://user-images.githubusercontent.com/61901509/210284410-5191e785-a1cc-49a9-80c4-f12c9bb175ed.png">
+
+***chooseIfWater:***
+
+A switch node with checking all rules mode. Checks if level of soil hydration (msg.payload value) is less than 60. 
+
+***CheckIfItIsNotRaining:***
+
+A switch node with checking all rules mode. Checks if msg.payload.weather[0].main is not a rainy weather. 
+
+* #### Http request node:
+
+<img width="289" alt="Zrzut ekranu 2023-01-3 o 00 21 48" src="https://user-images.githubusercontent.com/61901509/210284440-33cc9891-f923-4c7c-9a59-a437163f0213.png">
+
+***weather http request:***
+
+A http request node which ask **api.openweathermap.org** for a wether. A response from a GET method is returned as a parsed JSON object.
+
+* #### Change node:
+
+<img width="273" alt="Zrzut ekranu 2023-01-3 o 00 22 32" src="https://user-images.githubusercontent.com/61901509/210284464-d06a0788-5cae-4584-ac36-8b37cf925c76.png">
+
+***Set1MinuteWatering:***
+
+A node-red change node. Sets msg.payload to the value in format: {"turn":true,"time":1}
+
+***Set5MinutesWatering:***
+
+A node-red change node. Sets msg.payload to the value in format:  {"turn":true,"time":5}
+
+* #### Inject node:
+
+<img width="264" alt="Zrzut ekranu 2023-01-3 o 00 23 05" src="https://user-images.githubusercontent.com/61901509/210284498-60a484cd-1ffe-4a6e-8df2-03ca5bcb2189.png">
+
+***TriggerEveryMorningWatering:***
+
+An inject node-red node with repeat mode. Set at 8:00 everyday.
+
+***TriggerEveryEveningWatering:***
+
+An inject node-red node with repeat mode. Set at 22:00 everyday.
+
+***timestamp:***
+
+An inject node with msg.payload timestamp. Has set repeat interval on every 1 second. 
+
+* #### Function node:
+
+<img width="278" alt="Zrzut ekranu 2023-01-3 o 00 23 43" src="https://user-images.githubusercontent.com/61901509/210284526-7f01be12-f7f9-4a2d-aeb8-789495ffa18f.png">
+
+***humidity_point_parser:***
+
+A node-red function which is responsible for proper msg payload parsing.
+
+On message content:
+
+```
+const humidity = msg.payload;
+const now = new Date().getTime();
+return { payload: `${humidity} ${now} soil` }
+
+sprinkler_point_parser:
+
+A node-red function which is responsible for returning time in different formats.
+
+On message content:
+
+const minutes_working = msg.payload.time;
+
+const now = new Date().getTime();
+
+return [[
+
+{ payload: `0 ${now} sprinkler` },
+
+{ payload: `100 ${now + 1000} sprinkler` },
+
+{ payload: `100 ${now + minutes_working*1000*60} sprinkler` },
+
+{ payload: `0 ${1000 + now + minutes_working * 1000 * 60} sprinkler` },
+
+]]
+```
+
+***chart_parser:***
+
+A node-red function  which parses data to proper format to create historical chart.
+
+
+On message content:
+
+```
+const charts = {
+
+'soil': [],
+
+'sprinkler': []
+
+}
+
+const parsed_points = msg.payload.split('\n')
+
+for(let point of parsed_points){
+
+let [y, x, label] = point.split(' ');
+
+if(x && y && label) {
+
+charts[label].push({
+
+x: parseInt(x),
+
+y: parseInt(y)
+
+});
+
+}
+
+}
+
+return {
+
+payload: [{
+
+"series": ["Soil humidity", "Sprinkler ON/OFF"],
+
+"data": [charts['soil'], charts['sprinkler']],
+
+"labels": ["Soil humidity", "Sprinkler ON/OFF"]
+
+}]};
+
+[{
+
+"series": ["A", "B", "C"],
+
+"data": [
+
+[{ "x": 1504029632890, "y": 5 },
+
+{ "x": 1504029636001, "y": 4 },
+
+{ "x": 1504029638656, "y": 2 }
+
+],
+
+[{ "x": 1504029633514, "y": 6 },
+
+{ "x": 1504029636622, "y": 7 },
+
+{ "x": 1504029639539, "y": 6 }
+
+],
+
+[{ "x": 1504029634400, "y": 7 },
+
+{ "x": 1504029637959, "y": 7 },
+
+{ "x": 1504029640317, "y": 7 }
+
+]
+
+],
+
+"labels": [""]
+
+}]
+```
+
+* #### File node:
+
+<img width="291" alt="Zrzut ekranu 2023-01-3 o 00 24 52" src="https://user-images.githubusercontent.com/61901509/210284592-ce77ff89-338c-4c20-ba74-c09e774861fe.png">
+
+<img width="292" alt="Zrzut ekranu 2023-01-3 o 00 25 05" src="https://user-images.githubusercontent.com/61901509/210284601-dcde2b23-33f9-405d-994a-f3da98fd172d.png">
+
+***soil_data(write_file):***
+
+A write file node automatic adding newline (\n) to each payload and creating directory if it doesn't exist. Gets default encoding and filename path soil_data_9.
+
+***soil_data (read_file):***
+
+A read file node with default encoding and filename path soil_data_9. Output is  a single utf8 string.
+
+* #### Chart node:
+
+<img width="269" alt="Zrzut ekranu 2023-01-3 o 00 25 39" src="https://user-images.githubusercontent.com/61901509/210284627-b3c96564-cec8-44fb-949a-4ef6b4aa98ae.png">
+
+<img width="284" alt="Zrzut ekranu 2023-01-3 o 00 25 50" src="https://user-images.githubusercontent.com/61901509/210284631-036770f4-fc7a-48f6-8754-288e17c44c3b.png">
+
+***Poziom Nawodnienia real time:***
+
+A chart node which enables generate line chart with level of soil hydration from soil-sensor. Axis-X is in HH:mm:ss format.
+
+***Aktualny poziom nawodnienia:***
+
+A gauge node-red-dashboard node with shows a soil hydration in units. Type of chart is level.
+
+***Stan gleby:***
+
+A gauge node-red-dashboard node with gauge chart type. Shows the actual soil state in units.
+
+***Dane Historyczne:***
+
+A node-red-dashboard with historical data of soil humidity and sprinkler mode (ON/OFF). Provides a chart in line chart type. Axis-X is in HH:mm:ss format.
 
 ### Eclipse Mosquitto
 
