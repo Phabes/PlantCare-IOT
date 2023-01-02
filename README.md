@@ -93,6 +93,7 @@ There are 3 images used:
   _flows.js_ file stores the node-red flow which is loaded and then run when application starts.
 
   Dockerfile is used to build the image inside docker-compose file:
+
   ![Nodered](./images/Dockercompose-nodered.png)
 
 - **Redis**
@@ -103,6 +104,7 @@ There are 3 images used:
 
 All 3 images are put inside one container using docker-compose which lets us set up and run all images using one docker command.
 All images are connected with the same network: _iot-planet-net_.
+
 ![Dockercompose](./images/Dockercompose.png)
 
 ## Scripts
