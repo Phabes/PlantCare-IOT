@@ -34,7 +34,7 @@ Default server is `http://127.0.0.1:1880/`
 
 System layout:
 
-<img width="1440" alt="Zrzut ekranu 2022-12-30 o 20 10 41" src="https://user-images.githubusercontent.com/61901509/210109152-6c384cac-4d97-4d4f-a111-4e799908c06e.png">
+![321652927_441119368099957_4397307115607273046_n](https://user-images.githubusercontent.com/61901509/210244740-181e4a5e-9623-4f61-846a-8e8b3ed9e008.png)
 
 ### Eclipse Mosquitto
 
@@ -59,3 +59,11 @@ The level of the soil hydration is stored in the Redis database. Thanks to this 
 Default port: `"6379:6379"`
 
 ## Diagrams
+
+![321906699_470752491919449_5381184498221539571_n](https://user-images.githubusercontent.com/61901509/210244601-e0b977d2-851e-48e0-8282-bc53b10b3100.png)
+
+![321237787_887107109398009_5403797075088989886_n](https://user-images.githubusercontent.com/61901509/210244605-76a32d88-c0c4-4a60-9130-3b0775472291.png)
+
+![321922610_723402209343127_850382364625469373_n](https://user-images.githubusercontent.com/61901509/210244975-95924b3b-1957-4304-9ce4-1b7c726c2f38.png)
+
+
