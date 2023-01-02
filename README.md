@@ -90,7 +90,7 @@ There are 3 images used:
   _soil_data_9_ file stores data for charts. \
   _settings.js_ file stores settings that are loaded into the runtime as a Node.js module that exports a JavaScript object of key/value pairs. \
   _flows_cred.js_ is credentials file. It is encrypted by default to ensure its contents cannot be easily read. We provides the key for the encryption in the settings.js file. If another instance of Node-RED doesn't have the same encryption key, it won't be able to decrypt the file. \
-  _flows.js_ file stores the node-red flow which is loaded and then run when application starts. \
+  _flows.js_ file stores the node-red flow which is loaded and then run when application starts.
 
   Dockerfile is used to build the image inside docker-compose file:
 
