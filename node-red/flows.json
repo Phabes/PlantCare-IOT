@@ -7,376 +7,6 @@
         "info": ""
     },
     {
-        "id": "f0599547ee59029b",
-        "type": "tab",
-        "label": "Flow 2",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "9e54497d5cb8fb40",
-        "type": "tab",
-        "label": "PlantCare",
-        "disabled": false,
-        "info": ""
-    },
-    {
-        "id": "be8f1579cea974a8",
-        "type": "tab",
-        "label": "Flow 3",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "34a8b8f6f48748f5",
-        "type": "tab",
-        "label": "Flow 1",
-        "disabled": false,
-        "info": ""
-    },
-    {
-        "id": "6718ae28b8fee061",
-        "type": "tab",
-        "label": "Flow 4",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "fb674c52ac978bfa",
-        "type": "tab",
-        "label": "Flow 1",
-        "disabled": false,
-        "info": ""
-    },
-    {
-        "id": "b551d0beeb6044a4",
-        "type": "mqtt-broker",
-        "name": "mqtt",
-        "broker": "mosquitto",
-        "port": "1883",
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
-        "willMsg": {},
-        "userProps": "",
-        "sessionExpiry": ""
-    },
-    {
-        "id": "901e06ac39d3f22a",
-        "type": "mqtt-broker",
-        "name": "mqtt",
-        "broker": "mosquitto",
-        "port": "1883",
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthRetain": "false",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closeRetain": "false",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willRetain": "false",
-        "willPayload": "",
-        "willMsg": {},
-        "userProps": "",
-        "sessionExpiry": ""
-    },
-    {
-        "id": "b152f129194b96ab",
-        "type": "ui_base",
-        "theme": {
-            "name": "theme-light",
-            "lightTheme": {
-                "default": "#0094CE",
-                "baseColor": "#0094CE",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
-            },
-            "darkTheme": {
-                "default": "#097479",
-                "baseColor": "#097479",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
-            },
-            "customTheme": {
-                "name": "Untitled Theme 1",
-                "default": "#4B7930",
-                "baseColor": "#4B7930",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-            },
-            "themeState": {
-                "base-color": {
-                    "default": "#0094CE",
-                    "value": "#0094CE",
-                    "edited": false
-                },
-                "page-titlebar-backgroundColor": {
-                    "value": "#0094CE",
-                    "edited": false
-                },
-                "page-backgroundColor": {
-                    "value": "#fafafa",
-                    "edited": false
-                },
-                "page-sidebar-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-textColor": {
-                    "value": "#1bbfff",
-                    "edited": false
-                },
-                "group-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "widget-textColor": {
-                    "value": "#111111",
-                    "edited": false
-                },
-                "widget-backgroundColor": {
-                    "value": "#0094ce",
-                    "edited": false
-                },
-                "widget-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "base-font": {
-                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-                }
-            },
-            "angularTheme": {
-                "primary": "indigo",
-                "accents": "blue",
-                "warn": "red",
-                "background": "grey",
-                "palette": "light"
-            }
-        },
-        "site": {
-            "name": "Node-RED Dashboard",
-            "hideToolbar": "false",
-            "allowSwipe": "false",
-            "lockMenu": "false",
-            "allowTempTheme": "true",
-            "dateFormat": "DD/MM/YYYY",
-            "sizes": {
-                "sx": 48,
-                "sy": 48,
-                "gx": 6,
-                "gy": 6,
-                "cx": 6,
-                "cy": 6,
-                "px": 0,
-                "py": 0
-            }
-        }
-    },
-    {
-        "id": "515db88391a859c9",
-        "type": "redis-config",
-        "name": "Local",
-        "options": "{}",
-        "cluster": false,
-        "optionsType": "json"
-    },
-    {
-        "id": "54407a934e569cb5",
-        "type": "ui_tab",
-        "name": "SmartGarden",
-        "icon": "dashboard",
-        "disabled": false,
-        "hidden": false
-    },
-    {
-        "id": "c1967efb5f7418c2",
-        "type": "ui_group",
-        "name": "RealTime",
-        "tab": "54407a934e569cb5",
-        "order": 2,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "48a645d8eb0654d3",
-        "type": "ui_group",
-        "name": "History",
-        "tab": "54407a934e569cb5",
-        "order": 3,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "c197e6756cb6f43a",
-        "type": "ui_tab",
-        "name": "SmartGarden",
-        "icon": "dashboard",
-        "disabled": false,
-        "hidden": false
-    },
-    {
-        "id": "d6b2a9d5ba83bbc4",
-        "type": "ui_base",
-        "theme": {
-            "name": "theme-light",
-            "lightTheme": {
-                "default": "#0094CE",
-                "baseColor": "#0094CE",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
-            },
-            "darkTheme": {
-                "default": "#097479",
-                "baseColor": "#097479",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
-            },
-            "customTheme": {
-                "name": "Untitled Theme 1",
-                "default": "#4B7930",
-                "baseColor": "#4B7930",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-            },
-            "themeState": {
-                "base-color": {
-                    "default": "#0094CE",
-                    "value": "#0094CE",
-                    "edited": false
-                },
-                "page-titlebar-backgroundColor": {
-                    "value": "#0094CE",
-                    "edited": false
-                },
-                "page-backgroundColor": {
-                    "value": "#fafafa",
-                    "edited": false
-                },
-                "page-sidebar-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-textColor": {
-                    "value": "#1bbfff",
-                    "edited": false
-                },
-                "group-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "widget-textColor": {
-                    "value": "#111111",
-                    "edited": false
-                },
-                "widget-backgroundColor": {
-                    "value": "#0094ce",
-                    "edited": false
-                },
-                "widget-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "base-font": {
-                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-                }
-            },
-            "angularTheme": {
-                "primary": "indigo",
-                "accents": "blue",
-                "warn": "red",
-                "background": "grey",
-                "palette": "light"
-            }
-        },
-        "site": {
-            "name": "Node-RED Dashboard",
-            "hideToolbar": "false",
-            "allowSwipe": "false",
-            "lockMenu": "false",
-            "allowTempTheme": "true",
-            "dateFormat": "DD/MM/YYYY",
-            "sizes": {
-                "sx": 48,
-                "sy": 48,
-                "gx": 6,
-                "gy": 6,
-                "cx": 6,
-                "cy": 6,
-                "px": 0,
-                "py": 0
-            }
-        }
-    },
-    {
-        "id": "a476cb5be3ab9e45",
-        "type": "ui_group",
-        "name": "SmartGarden",
-        "tab": "c197e6756cb6f43a",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "ae36a0019874aaac",
-        "type": "redis-config",
-        "name": "Local",
-        "options": "{}",
-        "cluster": false,
-        "optionsType": "json"
-    },
-    {
-        "id": "a79afa81a29ab22b",
-        "type": "ui_group",
-        "name": "History",
-        "tab": "c197e6756cb6f43a",
-        "order": 2,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
         "id": "699c27a481f505cf",
         "type": "mqtt in",
         "z": "29c3163fb7817531",
@@ -746,7 +376,7 @@
         "filename": "soil_data_9",
         "filenameType": "str",
         "appendNewline": true,
-        "createDir": false,
+        "createDir": true,
         "overwriteFile": "false",
         "encoding": "none",
         "x": 1720,
@@ -1041,359 +671,90 @@
         "wires": []
     },
     {
-        "id": "feb22f3e4a68720b",
-        "type": "mqtt in",
-        "z": "9e54497d5cb8fb40",
-        "name": "",
-        "topic": "soil-sensor",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "b551d0beeb6044a4",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 200,
-        "y": 240,
-        "wires": [
-            [
-                "0ff07a72263403c8",
-                "4774a7eaedd248d3"
-            ]
-        ]
-    },
-    {
-        "id": "0ff07a72263403c8",
-        "type": "switch",
-        "z": "9e54497d5cb8fb40",
-        "name": "ChooseIfWater",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "lt",
-                "v": "30",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 440,
-        "y": 240,
-        "wires": [
-            [
-                "7c48cc863b222e45"
-            ]
-        ]
-    },
-    {
-        "id": "b862c8bc00ee622d",
-        "type": "mqtt out",
-        "z": "9e54497d5cb8fb40",
-        "name": "",
-        "topic": "sprinkler",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
+        "id": "b551d0beeb6044a4",
+        "type": "mqtt-broker",
+        "name": "mqtt",
+        "broker": "mosquitto",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
         "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "901e06ac39d3f22a",
-        "x": 1480,
-        "y": 380,
-        "wires": []
+        "sessionExpiry": ""
     },
     {
-        "id": "3b30f5d068280690",
-        "type": "change",
-        "z": "9e54497d5cb8fb40",
-        "name": "Set1MinuteWatering",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "{\"turn\":true,\"time\":1}",
-                "tot": "json"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1240,
-        "y": 240,
-        "wires": [
-            [
-                "b862c8bc00ee622d",
-                "faf7fd1a3898b330"
-            ]
-        ]
+        "id": "901e06ac39d3f22a",
+        "type": "mqtt-broker",
+        "name": "mqtt",
+        "broker": "mosquitto",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
     },
     {
-        "id": "4774a7eaedd248d3",
-        "type": "debug",
-        "z": "9e54497d5cb8fb40",
-        "name": "SOIL SENSOR",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 440,
-        "y": 160,
-        "wires": []
+        "id": "48a645d8eb0654d3",
+        "type": "ui_group",
+        "name": "History",
+        "tab": "54407a934e569cb5",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
     },
     {
-        "id": "d788dd960130fe62",
-        "type": "inject",
-        "z": "9e54497d5cb8fb40",
-        "name": "TriggerEveryEveningWatering",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "00 22 * * *",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "str",
-        "x": 390,
-        "y": 460,
-        "wires": [
-            [
-                "a8ae846b08199a6b"
-            ]
-        ]
+        "id": "c1967efb5f7418c2",
+        "type": "ui_group",
+        "name": "RealTime",
+        "tab": "54407a934e569cb5",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
     },
     {
-        "id": "c07b5a4ec6093c25",
-        "type": "inject",
-        "z": "9e54497d5cb8fb40",
-        "name": "TriggerEveryMorningWatering",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "00 08 * * *",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "str",
-        "x": 390,
-        "y": 580,
-        "wires": [
-            [
-                "a8ae846b08199a6b"
-            ]
-        ]
-    },
-    {
-        "id": "a8ae846b08199a6b",
-        "type": "http request",
-        "z": "9e54497d5cb8fb40",
-        "name": "weather http request",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "https://api.openweathermap.org/data/2.5/weather?lat=50.0833&lon=19.9167&appid=8c72e9138e65ec1186840b74f62d28ce",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 700,
-        "y": 520,
-        "wires": [
-            [
-                "1005819d25e18bdd",
-                "c24fb0593666e559"
-            ]
-        ]
-    },
-    {
-        "id": "1005819d25e18bdd",
-        "type": "switch",
-        "z": "9e54497d5cb8fb40",
-        "name": "CheckIfItIsNotRaining",
-        "property": "payload.weather[0].main",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "neq",
-                "v": "Rain",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 980,
-        "y": 520,
-        "wires": [
-            [
-                "34ab1649179dcfda"
-            ]
-        ]
-    },
-    {
-        "id": "7c48cc863b222e45",
-        "type": "http request",
-        "z": "9e54497d5cb8fb40",
-        "name": "weather http request",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "https://api.openweathermap.org/data/2.5/weather?lat=50.0833&lon=19.9167&appid=8c72e9138e65ec1186840b74f62d28ce",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 700,
-        "y": 240,
-        "wires": [
-            [
-                "cb4a9678b61f818a",
-                "f7b152c2fa2ed62b"
-            ]
-        ]
-    },
-    {
-        "id": "cb4a9678b61f818a",
-        "type": "switch",
-        "z": "9e54497d5cb8fb40",
-        "name": "CheckIfItIsNotRaining",
-        "property": "payload.weather[0].main",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "neq",
-                "v": "Rain",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 980,
-        "y": 240,
-        "wires": [
-            [
-                "3b30f5d068280690"
-            ]
-        ]
-    },
-    {
-        "id": "34ab1649179dcfda",
-        "type": "change",
-        "z": "9e54497d5cb8fb40",
-        "name": "Set5MinutesWatering",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "{\"turn\":true,\"time\":5}",
-                "tot": "json"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1240,
-        "y": 520,
-        "wires": [
-            [
-                "b862c8bc00ee622d",
-                "67a0e7c211628b57"
-            ]
-        ]
-    },
-    {
-        "id": "f7b152c2fa2ed62b",
-        "type": "debug",
-        "z": "9e54497d5cb8fb40",
-        "name": "WEATHER FORECAST",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 990,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "c24fb0593666e559",
-        "type": "debug",
-        "z": "9e54497d5cb8fb40",
-        "name": "WEATHER FORECAST",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 990,
-        "y": 440,
-        "wires": []
-    },
-    {
-        "id": "faf7fd1a3898b330",
-        "type": "debug",
-        "z": "9e54497d5cb8fb40",
-        "name": "TURNING ON 1 MINUTE",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1530,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "67a0e7c211628b57",
-        "type": "debug",
-        "z": "9e54497d5cb8fb40",
-        "name": "TURNING ON 5 MINUTES",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1540,
-        "y": 520,
-        "wires": []
+        "id": "54407a934e569cb5",
+        "type": "ui_tab",
+        "name": "SmartGarden",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
     }
 ]

@@ -11,16 +11,6 @@ services:
             - ./mosquitto/config:/mosquitto/config
             - ./mosquitto/data:/mosquitto/data
             - ./mosquitto/log:/mosquitto/log
-    node-red:
-        image: nodered/node-red
-        environment:
-            - TZ=Europe/Warsaw
-        networks:
-            - iot-plant-net
-        ports:
-            - "1880:1880"
-        volumes:
-            - ./node-red:/data
     redis:
         image: "redis:alpine"
         ports:
