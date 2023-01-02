@@ -17,8 +17,6 @@ To run all necesary components:
 
 ```
 docker compose up -d
-docker build -t node-red .
-docker run -p 1880:1880 --network iot_iot-plant-net -d node-red
 ```
 
 To run Python files:
@@ -68,5 +66,3 @@ Default port: `"6379:6379"`
 ![321237787_887107109398009_5403797075088989886_n](https://user-images.githubusercontent.com/61901509/210244605-76a32d88-c0c4-4a60-9130-3b0775472291.png)
 
 ![321922610_723402209343127_850382364625469373_n](https://user-images.githubusercontent.com/61901509/210244975-95924b3b-1957-4304-9ce4-1b7c726c2f38.png)
-
-
