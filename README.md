@@ -280,6 +280,7 @@ The level of the soil hydration is stored in the Redis database. Thanks to this 
 Default port: `"6379:6379"`
 
 ## Diagrams
+Node-RED Dashboards can be found at `ui` endpoint.
 
 ![321906699_470752491919449_5381184498221539571_n](https://user-images.githubusercontent.com/61901509/210244601-e0b977d2-851e-48e0-8282-bc53b10b3100.png)
 
