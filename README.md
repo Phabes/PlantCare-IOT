@@ -215,41 +215,6 @@ payload: [{
 
 }]};
 
-[{
-
-"series": ["A", "B", "C"],
-
-"data": [
-
-[{ "x": 1504029632890, "y": 5 },
-
-{ "x": 1504029636001, "y": 4 },
-
-{ "x": 1504029638656, "y": 2 }
-
-],
-
-[{ "x": 1504029633514, "y": 6 },
-
-{ "x": 1504029636622, "y": 7 },
-
-{ "x": 1504029639539, "y": 6 }
-
-],
-
-[{ "x": 1504029634400, "y": 7 },
-
-{ "x": 1504029637959, "y": 7 },
-
-{ "x": 1504029640317, "y": 7 }
-
-]
-
-],
-
-"labels": [""]
-
-}]
 ```
 
 * #### File node:
@@ -267,6 +232,10 @@ A write file node automatic adding newline (\n) to each payload and creating dir
 A read file node with default encoding and filename path soil_data_9. Output is  a single utf8 string.
 
 * #### Chart node:
+Chart nodes are from node-red-dashboard module that provides a set of nodes in Node-RED to create a live data dashboard.
+Each input msg.payload value is converted to a number that then is displayed on a chart. 
+
+To display a complete chart in one go - for example from a set of points retrieved from a database, the data must be supplied in the form of an array, that holds an object that has series,labels, and data arrays. This is broadly the same as the raw format used by the angular chart.js library.
 
 <img width="269" alt="Zrzut ekranu 2023-01-3 o 00 25 39" src="https://user-images.githubusercontent.com/61901509/210284627-b3c96564-cec8-44fb-949a-4ef6b4aa98ae.png">
 
