@@ -384,3 +384,21 @@ All scripts use redis to share one soil which is represented by an integer value
   When a message comes in with the turn value set to _true_ it starts watering which lasts the time value number of seconds . _humidity_ value is incremented by 1 every 200 miliseconds.
 
   ![Watering](./images/watering.png)
+
+## Additionally
+
+We can replace http request node with node included in module "node-red-node-openweathermap".
+
+![image](https://user-images.githubusercontent.com/49338133/210285667-bbc842fe-33b5-4171-a9a0-836edc32ada1.png)
+
+Management is easier than in http request because we don't have to create url. We just need to pass to it API key and coordinates (we can use country and city instead of coordinates).
+
+![image](https://user-images.githubusercontent.com/49338133/210285866-0da0b578-9e34-45e5-a5a2-d5032eec3c8d.png)
+
+By using this module we can get object much assimilable. Therefore getting needed data is easier. We can just use key that interest us.
+
+![image](https://user-images.githubusercontent.com/49338133/210286127-a5986af6-5c88-412d-bf71-a3c8f423986a.png)
+
+In both we can find the same data, but http request node has it more complicated to understand.
+
+![image](https://user-images.githubusercontent.com/49338133/210286151-f6dded0d-88c0-4e8d-b4e2-91009a0b2e20.png)
